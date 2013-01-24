@@ -19,7 +19,7 @@ Use the power of words and imagination to guide you through the Divine castle!
 * Descriptions of environment
 
 ### Technical Details
-* 27 sided die for random events
+* 27-sided die for random events
 * random module
 * setup.py
 * Learn and implement classes to simplify code
