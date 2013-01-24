@@ -6,11 +6,17 @@ A text-based dungeon crawler where you, as a wizard or warrior, explore the Divi
 ## How do I play? ##
 > python divine.py
 
-Use the power of your words and your imagination to guide you through the Divine castle!
+Use the power of words and imagination to guide you through the Divine castle!
 
-### To-Do ###
+## To-Do ##
 
-* Finish environments: attic
+### Game Features ###
+* Finish environments
 * Add enemies
 * Develop battle system
+* Treasure
+* Random events
+
+### Technical Details
 * setup.py
+* Learn and implement classes to simplify code
