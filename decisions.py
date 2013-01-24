@@ -1,9 +1,8 @@
 def confirmation():
-#    for blah in blah:
-#        do blah blah blah
-#        unless asdfasdf:
+#    for foo in bar:
+#        do action
+#        unless flag:
 #           then go back to previous function
-    
 
 
 def character_choice():
