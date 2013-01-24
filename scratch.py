@@ -19,5 +19,5 @@ choice = raw_input(prompt)
 command = actions[choice]
 command()
 
-# 21:47:08         bob2 | brotatos, no, you'd do 'actions = [jump, attack]' and then 'action[0]()'
-# 21:47:16         bob2 | brotatos, think of '()' as the "call" operator
+# do 'actions = [jump, attack]' and then 'action[0]()'
+# think of '()' as the "call" operator
