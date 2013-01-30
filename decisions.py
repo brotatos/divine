@@ -6,10 +6,10 @@ def confirmation():
 
 
 def character_choice():
-    character = raw_input("monk or warrior(m/w)? ")
+    character = raw_input("mage or warrior(m/w)? ")
     if character == "m":
         confirmation()
-        monk()
+        mage()
     if character == "w":
         confirmation()
         warrior()
