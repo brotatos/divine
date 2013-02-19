@@ -42,7 +42,7 @@ print blankCharacter.HP + Mage.HP
 
 character = Mage()
 
-print character.MP 
+print character.MP
 print Mage.h
 print character.h
 
