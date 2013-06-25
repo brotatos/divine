@@ -18,8 +18,9 @@
 #        enter        #
 #######################
 
-import random
-import environment
+import environment, random, sys
+
+TREASURE = random.randrange(1, 9)
 
 print """You awake as a thief in search of gold in front of Divine, a mystical castle.
 You believe the treasure is here; however, you may choose to enter or leave.
@@ -43,3 +44,13 @@ def bottom_middle():
             bottom_right()
 
 enter()
+
+#def getStatus(self):
+#    """ Determines if you have won the game or not. """
+#    # if occupant.location.number == TREASURE: win()
+#    if self.number == TREASURE:
+#        win()
+#
+#def win():
+#    print "You have found the treasure!"
+#    sys.exit()
