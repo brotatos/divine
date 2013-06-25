@@ -1,7 +1,7 @@
-#options = ['hello','how','are','you']
-#
-#for items in options:
-#    print items
+options = ['hello','how','are','you']
+
+for items in options:
+    print items
 
 def jump():
     return "You jumped!"
@@ -15,6 +15,8 @@ for items in actions:
 
 prompt = "> "
 choice = raw_input(prompt)
+if choice == "jump":
+    print "you have jumped"
 
 command = actions[choice]
 command()

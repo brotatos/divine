@@ -1,7 +1,8 @@
 # Divine #
 
 ## What is it? ##
-A text-based dungeon crawler where you, as a wizard or warrior, explore the Divine castle.
+A text-based dungeon crawler where you, a thief, explore the Divine
+castle in search of treasure.
 
 ## How do I play? ##
 > python divine.py
