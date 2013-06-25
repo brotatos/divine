@@ -1,6 +1,8 @@
+#!/usr/bin/env python2
 #######################       N
-#                     #     W   E
-# u_l     u_m     u_r #       S
+#       DIVINE        #     W   E
+#                     #       S
+# u_l     u_m     u_r #
 # 1##     2##     3## #
 # ###     ###     ### #
 # ###     ###     ### #
@@ -103,10 +105,10 @@ def move(Occupant):
     else:
         self.move()
 
-def getStatus(self):
+def getStatus(Occupant):
     """ Determines if you have won the game or not. """
     # if occupant.location.number == TREASURE: win()
-    if self.number == TREASURE:
+    if self.location.number == TREASURE:
         win()
 
 def win():
