@@ -38,6 +38,7 @@ class Room:
 
     def getDirections(self):
         """ Prints all possible directions to move in. """
+
         for directions in self.dirs:
             print "\t" + directions
 
@@ -46,20 +47,36 @@ class Occupant:
     def __init__(self):
         self.location = Room("botMid")
 
+    def getLocation(self):
+        chambers = {
+                    1: "Upper Left Chamber",
+                    2: "Upper Middle Chamber",
+                    3: "Upper Right Chamber",
+                    4: "Middle Left Chamber",
+                    5: "Middle Middle Chamber",
+                    6: "Middle Right Chamber",
+                    7: "Bottom Left Chamber",
+                    8: "Bottom Middle Chamber",
+                    9: "Bottom Right Chamber",
+        }
+        return chambers[self.location.number]
+
     # This function needs to be in divine.py because I will initialize all room
     # objects as variables and just have the occupant move to those variables.
     def move(self):
-        """ Move occupant based off direction. """
+        """ Move occupant based off direction.
+        Should also print the current room location.
+        """
+
+        print "You are currently in: " + self.getLocation()
         print "Which direction would you like to go?"
 
         dirs = set(self.location.dirs)
         self.location.getDirections()
         direction = raw_input("> ")
 
-        print "Previous location" + self.location
         if direction in dirs:
             self.location = Room(self.location.dirs[direction])
-            print "Final location" + self.location
         else:
             self.move()
 
