@@ -7,7 +7,7 @@ def jump():
     print "You jumped!"
 
 # dicts
-actions = {'jump': jump}
+actions = {'jump': jump, 'attack': 1}
 
 print "What action?"
 for items in actions:
