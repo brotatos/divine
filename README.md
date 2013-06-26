@@ -10,10 +10,8 @@ castle in search of treasure.
 Use the power of words and imagination to guide you through the Divine castle!
 
 ## Future Features ##
-
-### Game Features ###
-* Add enemies
-* Develop battle system
+* Random enemies
+* Battle system
 
 ## License ##
 MIT.
