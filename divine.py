@@ -20,7 +20,7 @@
 #        enter        #
 #######################
 
-import random, sys, collections
+import random, sys
 
 TREASURE_X = random.randrange(0, 2)
 TREASURE_Y = random.randrange(0, 2)
@@ -98,25 +98,29 @@ def move(Occupant):
         else:
             Occupant.location.y -= 1
         print "You are now here: " + Occupant.getLocation()
+        checkTreasure(Occupant)
     else:
         move(Occupant)
 
 def checkTreasure(Occupant):
     """ Determines if you have won the game or not. """
     if Occupant.location.x == TREASURE_X and Occupant.location.y == TREASURE_Y:
-        win()
+        win(Occupant)
 
 def win(Occupant):
     print "You have found the treasure in %s!" % Occupant.getLocation()
     sys.exit()
 
 if __name__ == '__main__':
-    robin = Occupant()
-    move(robin)
-    room = Room(0, 1)
-    room.getDirections()
-    #print """You awake as a thief in search of gold in front of Divine, a mystical castle.
-    #You believe the treasure is here; however, you may choose to enter or leave.
-    #"""
-    #robin = Occupant()
-    #move(robin)
+    print """You awake as a thief in search of gold in front of Divine, a mystical castle.
+You believe the treasure is here; however, you may choose to enter or leave.
+    """
+    choice = raw_input("(enter/leave) ")
+    if choice == "enter":
+        thief = Occupant();
+        while True:
+            move(thief)
+    else:
+        print "You leave the immediately."
+        sys.exit()
+
