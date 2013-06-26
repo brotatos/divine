@@ -99,7 +99,7 @@ def move(Occupant):
     Should also print the current room location.
     """
 
-    print "You are currently at: " + Occupant.getLocation()
+    print "\nYou are currently at: " + Occupant.getLocation()
     print "Which direction would you like to go?"
     dirs = Occupant.location.getDirections()
     for i in dirs:
