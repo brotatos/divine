@@ -129,7 +129,7 @@ def win(Occupant):
 
 if __name__ == '__main__':
     print """You awake as a thief in search of gold in front of Divine, a mystical castle.
-You believe the treasure is here; however, you may choose to enter or leave.
+You believe the treasure is here; you may choose to enter or leave.
     """
     choice = raw_input("(enter/leave) ")
     if choice == "enter":
