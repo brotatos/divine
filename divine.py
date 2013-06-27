@@ -36,7 +36,8 @@
 #                     #
 #######################
 
-import random, sys
+import random
+import sys
 
 TREASURE_X = random.randrange(0, 2)
 TREASURE_Y = random.randrange(0, 2)
