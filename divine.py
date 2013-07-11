@@ -46,7 +46,7 @@ X_MAX = 2
 Y_MIN = 0
 Y_MAX = 2
 
-class Room:
+class Room(object):
     def __init__(self, x, y):
         if x < X_MIN or x > X_MAX:
             raise Exception("Invalid x coordinate.")
@@ -80,7 +80,7 @@ class Room:
 
         return dirs
 
-class Occupant:
+class Occupant(object):
     def __init__(self):
         self.location = Room(random.randrange(0, 2), random.randrange(0, 2))
 
