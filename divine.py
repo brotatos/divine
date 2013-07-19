@@ -138,6 +138,6 @@ You believe the treasure is here; you may choose to enter or leave.
         while True:
             move(thief)
     else:
-        print "You leave the immediately."
+        print "You leave immediately."
         sys.exit()
 
