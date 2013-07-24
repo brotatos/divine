@@ -92,9 +92,7 @@ class Occupant(object):
         return names[self.location.x][self.location.y]
 
 def move(Occupant):
-    """ Move occupant based off direction.
-    Should also print the current room location.
-    """
+    """ Move occupant based off direction. Print the current room location."""
 
     print "\nYou are currently at: " + Occupant.getLocation()
     print "Which direction would you like to go?"
