@@ -59,7 +59,7 @@ class Room(object):
             self.y = y
 
     def getDirections(self):
-        """ Prints all possible directions to move in. """
+        """Prints all possible directions to move in."""
         dirs = []
 
         if self.x == X_MIN:
@@ -85,6 +85,7 @@ class Occupant(object):
         self.location = Room(random.randrange(0, 2), random.randrange(0, 2))
 
     def getLocation(self):
+        """Assigns room names to rooms based of cartesian coordinates."""
         names = [ ["The Solar", "The Mezzanine", "The Lords & Ladies Chamber"],
                   ["The Bower", "The Great Hall", "The Bottlery"],
                   ["The Chapel", "The Oratory", "The Bailey"],
@@ -92,7 +93,7 @@ class Occupant(object):
         return names[self.location.x][self.location.y]
 
 def move(Occupant):
-    """ Move occupant based off direction. Print the current room location."""
+    """Move occupant based off direction. Print the current room location."""
 
     print "\nYou are currently at: " + Occupant.getLocation()
     print "Which direction would you like to go?"
@@ -118,11 +119,12 @@ def move(Occupant):
         move(Occupant)
 
 def checkTreasure(Occupant):
-    """ Determines if you have won the game or not. """
+    """Determines if you have won the game or not."""
     if Occupant.location.x == TREASURE_X and Occupant.location.y == TREASURE_Y:
         win(Occupant)
 
 def win(Occupant):
+    """Executes the win sequences by printing a message and exits."""
     print "You have found the treasure in %s!" % Occupant.getLocation()
     sys.exit()
 
@@ -138,4 +140,3 @@ You believe the treasure is here; you may choose to enter or leave.
     else:
         print "You leave immediately."
         sys.exit()
-
