@@ -60,7 +60,7 @@ class Room(object):
         else:
             self.y = y
 
-    def getDirections(self):
+    def get_directions(self):
         """Prints all possible directions to move in."""
         dirs = []
 
@@ -88,7 +88,7 @@ class Occupant(object):
     def __init__(self):
         self.location = Room(random.randrange(0, 2), random.randrange(0, 2))
 
-    def getLocation(self):
+    def get_location(self):
         """Assigns room names to rooms based of cartesian coordinates."""
         names = [["The Solar", "The Mezzanine", "The Lords & Ladies Chamber"],
                  ["The Bower", "The Great Hall", "The Bottlery"],
@@ -100,9 +100,9 @@ class Occupant(object):
 def move(Occupant):
     """Move occupant based off direction. Print the current room location."""
 
-    print "\nYou are currently at: " + Occupant.getLocation()
+    print "\nYou are currently at: " + Occupant.get_location()
     print "Which direction would you like to go?"
-    dirs = Occupant.location.getDirections()
+    dirs = Occupant.location.get_directions()
     for i in dirs:
         print "\t" + i
 
@@ -118,7 +118,7 @@ def move(Occupant):
             Occupant.location.y += 1
         else:
             Occupant.location.y -= 1
-        print "You are now here: " + Occupant.getLocation()
+        print "You are now here: " + Occupant.get_location()
         checkTreasure(Occupant)
     else:
         move(Occupant)
@@ -132,7 +132,7 @@ def checkTreasure(Occupant):
 
 def win(Occupant):
     """Executes the win sequences by printing a message and exits."""
-    print "You have found the treasure in %s!" % Occupant.getLocation()
+    print "You have found the treasure in %s!" % Occupant.get_location()
     sys.exit()
 
 if __name__ == '__main__':
