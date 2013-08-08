@@ -46,7 +46,9 @@ X_MAX = 2
 Y_MIN = 0
 Y_MAX = 2
 
+
 class Room(object):
+
     def __init__(self, x, y):
         if x < X_MIN or x > X_MAX:
             raise Exception("Invalid x coordinate.")
@@ -80,17 +82,20 @@ class Room(object):
 
         return dirs
 
+
 class Occupant(object):
+
     def __init__(self):
         self.location = Room(random.randrange(0, 2), random.randrange(0, 2))
 
     def getLocation(self):
         """Assigns room names to rooms based of cartesian coordinates."""
-        names = [ ["The Solar", "The Mezzanine", "The Lords & Ladies Chamber"],
-                  ["The Bower", "The Great Hall", "The Bottlery"],
-                  ["The Chapel", "The Oratory", "The Bailey"],
-                ]
+        names = [["The Solar", "The Mezzanine", "The Lords & Ladies Chamber"],
+                 ["The Bower", "The Great Hall", "The Bottlery"],
+                 ["The Chapel", "The Oratory", "The Bailey"]
+                 ]
         return names[self.location.x][self.location.y]
+
 
 def move(Occupant):
     """Move occupant based off direction. Print the current room location."""
@@ -118,10 +123,12 @@ def move(Occupant):
     else:
         move(Occupant)
 
+
 def checkTreasure(Occupant):
     """Determines if you have won the game or not."""
     if Occupant.location.x == TREASURE_X and Occupant.location.y == TREASURE_Y:
         win(Occupant)
+
 
 def win(Occupant):
     """Executes the win sequences by printing a message and exits."""
@@ -129,12 +136,12 @@ def win(Occupant):
     sys.exit()
 
 if __name__ == '__main__':
-    print """You awake as a thief in search of gold in front of Divine, a mystical castle.
-You believe the treasure is here; you may choose to enter or leave.
-    """
+    print "You awake as a thief in search of gold in front of Divine "
+    + "a mystical castle."
+    print "You believe the treasure is here; you may choose to enter or leave."
     choice = raw_input("(enter/leave) ")
     if choice == "enter":
-        thief = Occupant();
+        thief = Occupant()
         while True:
             move(thief)
     else:
