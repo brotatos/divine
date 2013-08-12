@@ -125,7 +125,7 @@ def move(Occupant):
 
 
 def checkTreasure(Occupant):
-    """Determines if you have won the game or not."""
+    """Determines if the player has won the game or not."""
     if Occupant.location.x == TREASURE_X and Occupant.location.y == TREASURE_Y:
         win(Occupant)
 
