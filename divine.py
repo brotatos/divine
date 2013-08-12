@@ -36,11 +36,11 @@
 #                     #
 #######################
 
-import random
-import sys
+from random import randrange
+from sys import exit
 
-TREASURE_X = random.randrange(0, 2)
-TREASURE_Y = random.randrange(0, 2)
+TREASURE_X = randrange(0, 2)
+TREASURE_Y = randrange(0, 2)
 X_MIN = 0
 X_MAX = 2
 Y_MIN = 0
@@ -86,7 +86,7 @@ class Room(object):
 class Occupant(object):
 
     def __init__(self):
-        self.location = Room(random.randrange(0, 2), random.randrange(0, 2))
+        self.location = Room(randrange(0, 2), randrange(0, 2))
 
     def get_location(self):
         """Assigns room names to rooms based of cartesian coordinates."""
@@ -133,11 +133,11 @@ def checkTreasure(Occupant):
 def win(Occupant):
     """Executes the win sequences by printing a message and exits."""
     print "You have found the treasure in %s!" % Occupant.get_location()
-    sys.exit()
+    exit()
 
 if __name__ == '__main__':
-    print "You awake as a thief in search of gold in front of Divine "
-    + "a mystical castle."
+    print "You awake as a thief in search of gold in front of Divine a",
+    print "mystical castle."
     print "You believe the treasure is here; you may choose to enter or leave."
     choice = raw_input("(enter/leave) ")
     if choice == "enter":
@@ -146,4 +146,4 @@ if __name__ == '__main__':
             move(thief)
     else:
         print "You leave immediately."
-        sys.exit()
+        exit()
