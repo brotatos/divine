@@ -106,10 +106,10 @@ def move(Occupant):
     for i in dirs:
         print "\t" + i
 
-    checkdirs = set(dirs)
+    check_dirs = set(dirs)
     direction = raw_input("> ")
 
-    if direction in checkdirs:
+    if direction in check_dirs:
         if direction == "east":
             Occupant.location.x += 1
         elif direction == "west":
@@ -119,12 +119,12 @@ def move(Occupant):
         else:
             Occupant.location.y -= 1
         print "You are now here: " + Occupant.get_location()
-        checkTreasure(Occupant)
+        check_treasure(Occupant)
     else:
         move(Occupant)
 
 
-def checkTreasure(Occupant):
+def check_treasure(Occupant):
     """Determines if the player has won the game or not."""
     if Occupant.location.x == TREASURE_X and Occupant.location.y == TREASURE_Y:
         win(Occupant)
