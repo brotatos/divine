@@ -22,34 +22,33 @@
 #######################       N
 #       DIVINE        #     W   E
 #                     #       S
-# u_l     u_m     u_r #
-# A##     B##     C## #
 # ###     ###     ### #
-# ###     ###     ### #
-#                     #
-# m_l     m_m     m_r #
-# D##     E##     F## #
 # ###     ###     ### #
 # ###     ###     ### #
 #                     #
-# b_l     b_m     b_r #
-# G##     H##     I## #
+# ###     ###     ### #
 # ###     ###     ### #
 # ###     ###     ### #
 #                     #
-#        enter        #
+# ###     ###     ### #
+# ###     ###     ### #
+# ###     ###     ### #
+#                     #
 #######################
 
-import random, sys
+from random import randrange
+from sys import exit
 
-TREASURE_X = random.randrange(0, 2)
-TREASURE_Y = random.randrange(0, 2)
+TREASURE_X = randrange(0, 2)
+TREASURE_Y = randrange(0, 2)
 X_MIN = 0
 X_MAX = 2
 Y_MIN = 0
 Y_MAX = 2
 
-class Room:
+
+class Room(object):
+
     def __init__(self, x, y):
         if x < X_MIN or x > X_MAX:
             raise Exception("Invalid x coordinate.")
@@ -61,8 +60,8 @@ class Room:
         else:
             self.y = y
 
-    def getDirections(self):
-        """ Prints all possible directions to move in. """
+    def get_directions(self):
+        """Prints all possible directions to move in."""
         dirs = []
 
         if self.x == X_MIN:
@@ -83,32 +82,34 @@ class Room:
 
         return dirs
 
-class Occupant:
-    def __init__(self):
-        self.location = Room(random.randrange(0, 2), random.randrange(0, 2))
 
-    def getLocation(self):
-        names = [ ["The Solar", "The Mezzanine", "The Lords & Ladies Chamber"],
-                  ["The Bower", "The Great Hall", "The Bottlery"],
-                  ["The Chapel", "The Oratory", "The Bailey"],
-                ]
+class Occupant(object):
+
+    def __init__(self):
+        self.location = Room(randrange(0, 2), randrange(0, 2))
+
+    def get_location(self):
+        """Assigns room names to rooms based of cartesian coordinates."""
+        names = [["The Solar", "The Mezzanine", "The Lords & Ladies Chamber"],
+                 ["The Bower", "The Great Hall", "The Bottlery"],
+                 ["The Chapel", "The Oratory", "The Bailey"]
+                 ]
         return names[self.location.x][self.location.y]
 
-def move(Occupant):
-    """ Move occupant based off direction.
-    Should also print the current room location.
-    """
 
-    print "\nYou are currently at: " + Occupant.getLocation()
+def move(Occupant):
+    """Move occupant based off direction. Print the current room location."""
+
+    print "\nYou are currently at: " + Occupant.get_location()
     print "Which direction would you like to go?"
-    dirs = Occupant.location.getDirections()
+    dirs = Occupant.location.get_directions()
     for i in dirs:
         print "\t" + i
 
-    checkdirs = set(dirs)
+    check_dirs = set(dirs)
     direction = raw_input("> ")
 
-    if direction in checkdirs:
+    if direction in check_dirs:
         if direction == "east":
             Occupant.location.x += 1
         elif direction == "west":
@@ -117,30 +118,32 @@ def move(Occupant):
             Occupant.location.y += 1
         else:
             Occupant.location.y -= 1
-        print "You are now here: " + Occupant.getLocation()
-        checkTreasure(Occupant)
+        print "You are now here: " + Occupant.get_location()
+        check_treasure(Occupant)
     else:
         move(Occupant)
 
-def checkTreasure(Occupant):
-    """ Determines if you have won the game or not. """
+
+def check_treasure(Occupant):
+    """Determines if the player has won the game or not."""
     if Occupant.location.x == TREASURE_X and Occupant.location.y == TREASURE_Y:
         win(Occupant)
 
+
 def win(Occupant):
-    print "You have found the treasure in %s!" % Occupant.getLocation()
-    sys.exit()
+    """Executes the win sequences by printing a message and exits."""
+    print "You have found the treasure in %s!" % Occupant.get_location()
+    exit()
 
 if __name__ == '__main__':
-    print """You awake as a thief in search of gold in front of Divine, a mystical castle.
-You believe the treasure is here; however, you may choose to enter or leave.
-    """
+    print "You awake as a thief in search of gold in front of Divine a",
+    print "mystical castle."
+    print "You believe the treasure is here; you may choose to enter or leave."
     choice = raw_input("(enter/leave) ")
     if choice == "enter":
-        thief = Occupant();
+        thief = Occupant()
         while True:
             move(thief)
     else:
-        print "You leave the immediately."
-        sys.exit()
-
+        print "You leave immediately."
+        exit()
