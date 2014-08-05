@@ -37,7 +37,7 @@
 #######################
 
 from random import randrange
-from sys import exit
+import sys
 
 TREASURE_X = randrange(0, 2)
 TREASURE_Y = randrange(0, 2)
@@ -132,7 +132,7 @@ def check_treasure(Occupant):
 def win(Occupant):
     """Executes the win sequences by printing a message and exits."""
     print "You have found the treasure in %s!" % Occupant.get_location()
-    exit()
+    sys.exit()
 
 if __name__ == '__main__':
     print "You awake as a thief in search of gold in front of Divine a",
@@ -145,4 +145,4 @@ if __name__ == '__main__':
             move(thief)
     else:
         print "You leave immediately."
-        exit()
+        sys.exit()
