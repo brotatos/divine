@@ -1,23 +1,24 @@
 #!/usr/bin/env python
-# Copyright (c) 2012-2013 Robin Choudhury
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
+"""
+Copyright (c) 2012-2013 Robin Choudhury
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
 
 #######################       N
 #       DIVINE        #     W   E
@@ -35,6 +36,7 @@
 # ###     ###     ### #
 #                     #
 #######################
+"""
 
 from random import randrange
 import sys
@@ -48,6 +50,7 @@ Y_MAX = 2
 
 
 class Room(object):
+    """Represents one piece of the Divine castle."""
 
     def __init__(self, x, y):
         if x < X_MIN or x > X_MAX:
@@ -80,6 +83,7 @@ class Room(object):
 
 
 class Occupant(object):
+    """Represents the player navigating through the maze."""
 
     def __init__(self):
         self.location = Room(randrange(0, 2), randrange(0, 2))
@@ -94,7 +98,8 @@ class Occupant(object):
         return self.names[self.location.x][self.location.y]
 
     def move(self):
-        """Move occupant based off direction. Print the current room location."""
+        """Move occupant based off direction. Print the current room
+        location."""
 
         print "\nYou are currently at: " + self._get_location()
         print "Which direction would you like to go?"
