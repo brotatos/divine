@@ -89,47 +89,44 @@ class Occupant(object):
             ("The Chapel", "The Oratory", "The Bailey")
             ]
 
-    def get_location(self):
+    def _get_location(self):
         """Assigns room names to rooms based of cartesian coordinates."""
         return self.names[self.location.x][self.location.y]
 
+    def move(self):
+        """Move occupant based off direction. Print the current room location."""
 
-def move(Occupant):
-    """Move occupant based off direction. Print the current room location."""
+        print "\nYou are currently at: " + self._get_location()
+        print "Which direction would you like to go?"
+        dirs = self.location.get_directions()
+        for i in dirs:
+            print "\t" + i
 
-    print "\nYou are currently at: " + Occupant.get_location()
-    print "Which direction would you like to go?"
-    dirs = Occupant.location.get_directions()
-    for i in dirs:
-        print "\t" + i
+        direction = raw_input("> ")
 
-    direction = raw_input("> ")
-
-    if direction in dirs:
-        if direction == "east":
-            Occupant.location.x += 1
-        elif direction == "west":
-            Occupant.location.x -= 1
-        elif direction == "north":
-            Occupant.location.y += 1
+        if direction in dirs:
+            if direction == "east":
+                self.location.x += 1
+            elif direction == "west":
+                self.location.x -= 1
+            elif direction == "north":
+                self.location.y += 1
+            else:
+                self.location.y -= 1
+            print "You are now here: " + self._get_location()
+            self.check_treasure()
         else:
-            Occupant.location.y -= 1
-        print "You are now here: " + Occupant.get_location()
-        check_treasure(Occupant)
-    else:
-        move(Occupant)
+            self.move()
 
+    def check_treasure(self):
+        """Determines if the player has won the game or not."""
+        if self.location.x == TREASURE_X and self.location.y == TREASURE_Y:
+            self.win()
 
-def check_treasure(Occupant):
-    """Determines if the player has won the game or not."""
-    if Occupant.location.x == TREASURE_X and Occupant.location.y == TREASURE_Y:
-        win(Occupant)
-
-
-def win(Occupant):
-    """Executes the win sequences by printing a message and exits."""
-    print "You have found the treasure in %s!" % Occupant.get_location()
-    sys.exit()
+    def win(self):
+        """Executes the win sequences by printing a message and exits."""
+        print "You have found the treasure in %s!" % self._get_location()
+        sys.exit()
 
 if __name__ == '__main__':
     print "You awake as a thief in search of gold in front of Divine a",
@@ -139,7 +136,7 @@ if __name__ == '__main__':
     if choice == "enter":
         thief = Occupant()
         while True:
-            move(thief)
+            thief.move()
     else:
         print "You leave immediately."
         sys.exit()
