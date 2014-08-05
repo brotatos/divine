@@ -121,10 +121,10 @@ class Occupant(object):
         sys.exit(0)
 
 if __name__ == '__main__':
-    print("You awake as a thief in search of gold in front of Divine a " +
-          "mystical castle.")
-    print("You believe the treasure is here; you may choose to enter or" +
-          "leave.")
+    print("""
+    You awake as a thief in search of gold in front of Divine a mystical castle
+    You believe the treasure is here; you may choose to enter or leave.
+    """)
     if input("(enter/leave) ") == "enter":
         THIEF = Occupant()
         while True:
