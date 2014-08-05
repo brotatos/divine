@@ -62,23 +62,23 @@ class Room(object):
 
     def get_directions(self):
         """Prints all possible directions to move in."""
-        dirs = []
+        dirs = set()
 
         if self.x == X_MIN:
-            dirs.append("east")
+            dirs.add("east")
         elif self.x == X_MIN + 1:
-            dirs.append("east")
-            dirs.append("west")
+            dirs.add("east")
+            dirs.add("west")
         else:
-            dirs.append("west")
+            dirs.add("west")
 
         if self.y == Y_MIN:
-            dirs.append("north")
+            dirs.add("north")
         elif self.y == Y_MIN + 1:
-            dirs.append("north")
-            dirs.append("south")
+            dirs.add("north")
+            dirs.add("south")
         else:
-            dirs.append("south")
+            dirs.add("south")
 
         return dirs
 
@@ -106,10 +106,9 @@ def move(Occupant):
     for i in dirs:
         print "\t" + i
 
-    check_dirs = set(dirs)
     direction = raw_input("> ")
 
-    if direction in check_dirs:
+    if direction in dirs:
         if direction == "east":
             Occupant.location.x += 1
         elif direction == "west":
