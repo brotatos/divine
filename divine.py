@@ -61,24 +61,20 @@ class Room(object):
             self.y = y
 
     def get_directions(self):
-        """Prints all possible directions to move in."""
+        """Obtains possible directions based off current coordinates."""
         dirs = set()
 
-        if self.x == X_MIN:
-            dirs.add("east")
-        elif self.x == X_MIN + 1:
-            dirs.add("east")
-            dirs.add("west")
-        else:
+        if self.x > X_MIN:
             dirs.add("west")
 
-        if self.y == Y_MIN:
-            dirs.add("north")
-        elif self.y == Y_MIN + 1:
-            dirs.add("north")
+        if self.x < X_MAX:
+            dirs.add("east")
+
+        if self.y > Y_MIN:
             dirs.add("south")
-        else:
-            dirs.add("south")
+
+        if self.y < Y_MAX:
+            dirs.add("north")
 
         return dirs
 
