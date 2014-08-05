@@ -86,13 +86,13 @@ class Occupant(object):
         """Move occupant based off direction. Print the current room
         location."""
 
-        print "\nYou are currently at: " + self._get_location()
-        print "Which direction would you like to go?"
+        print("\nYou are currently at: {0} ".format(self._get_location()))
+        print("Which direction would you like to go?")
         dirs = self.get_directions()
         for i in dirs:
-            print "\t" + i
+            print("\t{0}".format(i))
 
-        direction = raw_input("> ")
+        direction = input("> ")
 
         if direction in dirs:
             if direction == "east":
@@ -103,7 +103,7 @@ class Occupant(object):
                 self.location['y'] += 1
             else:
                 self.location['y'] -= 1
-            print "You are now here: " + self._get_location()
+            print("You are now here: {0}".format(self._get_location()))
             self.check_treasure()
         else:
             self.move()
@@ -116,17 +116,19 @@ class Occupant(object):
 
     def win(self):
         """Executes the win sequences by printing a message and exits."""
-        print "You have found the treasure in %s!" % self._get_location()
-        sys.exit()
+        print("You have found the treasure in " +
+              "{0}!".format(self._get_location()))
+        sys.exit(0)
 
 if __name__ == '__main__':
-    print "You awake as a thief in search of gold in front of Divine a",
-    print "mystical castle."
-    print "You believe the treasure is here; you may choose to enter or leave."
-    if raw_input("(enter/leave) ") == "enter":
+    print("You awake as a thief in search of gold in front of Divine a " +
+          "mystical castle.")
+    print("You believe the treasure is here; you may choose to enter or" +
+          "leave.")
+    if input("(enter/leave) ") == "enter":
         THIEF = Occupant()
         while True:
             THIEF.move()
     else:
-        print "You leave immediately."
+        print("You leave immediately.")
         sys.exit()
