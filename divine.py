@@ -86,9 +86,9 @@ class Occupant(object):
 
     def get_location(self):
         """Assigns room names to rooms based of cartesian coordinates."""
-        names = [["The Solar", "The Mezzanine", "The Lords & Ladies Chamber"],
-                 ["The Bower", "The Great Hall", "The Bottlery"],
-                 ["The Chapel", "The Oratory", "The Bailey"]
+        names = [("The Solar", "The Mezzanine", "The Lords & Ladies Chamber"),
+                 ("The Bower", "The Great Hall", "The Bottlery"),
+                 ("The Chapel", "The Oratory", "The Bailey")
                  ]
         return names[self.location.x][self.location.y]
 
