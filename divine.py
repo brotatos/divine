@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # Copyright (c) 2012-2013 Robin Choudhury
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
