@@ -123,11 +123,10 @@ if __name__ == '__main__':
     print "You awake as a thief in search of gold in front of Divine a",
     print "mystical castle."
     print "You believe the treasure is here; you may choose to enter or leave."
-    choice = raw_input("(enter/leave) ")
-    if choice == "enter":
-        thief = Occupant()
+    if raw_input("(enter/leave) ") == "enter":
+        THIEF = Occupant()
         while True:
-            thief.move()
+            THIEF.move()
     else:
         print "You leave immediately."
         sys.exit()
