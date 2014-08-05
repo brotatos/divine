@@ -49,53 +49,38 @@ Y_MIN = 0
 Y_MAX = 2
 
 
-class Room(object):
-    """Represents one piece of the Divine castle."""
-
-    def __init__(self, x, y):
-        if x < X_MIN or x > X_MAX:
-            raise Exception("Invalid x coordinate.")
-        else:
-            self.x = x
-
-        if y < Y_MIN or y > Y_MAX:
-            raise Exception("Invalid y coordinate.")
-        else:
-            self.y = y
-
-    def get_directions(self):
-        """Obtains possible directions based off current coordinates."""
-        dirs = set()
-
-        if self.x > X_MIN:
-            dirs.add("west")
-
-        if self.x < X_MAX:
-            dirs.add("east")
-
-        if self.y > Y_MIN:
-            dirs.add("south")
-
-        if self.y < Y_MAX:
-            dirs.add("north")
-
-        return dirs
-
-
 class Occupant(object):
     """Represents the player navigating through the maze."""
 
     def __init__(self):
-        self.location = Room(randrange(0, 2), randrange(0, 2))
+        self.location = {'x': randrange(0, 2), 'y': randrange(0, 2)}
         self.names = [
             ("The Solar", "The Mezzanine", "The Lords & Ladies ", "Chamber"),
             ("The Bower", "The Great Hall", "The Bottlery"),
             ("The Chapel", "The Oratory", "The Bailey")
             ]
 
+    def get_directions(self):
+        """Obtains possible directions based off current coordinates."""
+        dirs = set()
+
+        if self.location['x'] > X_MIN:
+            dirs.add("west")
+
+        if self.location['x'] < X_MAX:
+            dirs.add("east")
+
+        if self.location['y'] > Y_MIN:
+            dirs.add("south")
+
+        if self.location['y'] < Y_MAX:
+            dirs.add("north")
+
+        return dirs
+
     def _get_location(self):
         """Assigns room names to rooms based of cartesian coordinates."""
-        return self.names[self.location.x][self.location.y]
+        return self.names[self.location['x']][self.location['y']]
 
     def move(self):
         """Move occupant based off direction. Print the current room
@@ -103,7 +88,7 @@ class Occupant(object):
 
         print "\nYou are currently at: " + self._get_location()
         print "Which direction would you like to go?"
-        dirs = self.location.get_directions()
+        dirs = self.get_directions()
         for i in dirs:
             print "\t" + i
 
@@ -111,13 +96,13 @@ class Occupant(object):
 
         if direction in dirs:
             if direction == "east":
-                self.location.x += 1
+                self.location['x'] += 1
             elif direction == "west":
-                self.location.x -= 1
+                self.location['x'] -= 1
             elif direction == "north":
-                self.location.y += 1
+                self.location['y'] += 1
             else:
-                self.location.y -= 1
+                self.location['y'] -= 1
             print "You are now here: " + self._get_location()
             self.check_treasure()
         else:
@@ -125,7 +110,8 @@ class Occupant(object):
 
     def check_treasure(self):
         """Determines if the player has won the game or not."""
-        if self.location.x == TREASURE_X and self.location.y == TREASURE_Y:
+        if self.location['x'] == TREASURE_X \
+                and self.location['y'] == TREASURE_Y:
             self.win()
 
     def win(self):
