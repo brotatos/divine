@@ -41,19 +41,19 @@ THE SOFTWARE.
 from random import randrange
 import sys
 
-TREASURE_X = randrange(0, 2)
-TREASURE_Y = randrange(0, 2)
-X_MIN = 0
-X_MAX = 2
-Y_MIN = 0
-Y_MAX = 2
+MAP_MIN = 0
+MAP_MAX = 2
+TREASURE = {'x': randrange(MAP_MIN, MAP_MAX), 'y': randrange(MAP_MIN, MAP_MAX)}
 
 
 class Occupant(object):
     """Represents the player navigating through the maze."""
 
     def __init__(self):
-        self.location = {'x': randrange(0, 2), 'y': randrange(0, 2)}
+        self.location = {
+            'x': randrange(MAP_MIN, MAP_MAX),
+            'y': randrange(MAP_MIN, MAP_MAX)
+            }
         self.rooms = [
             ("The Solar", "The Mezzanine", "The Lords & Ladies ", "Chamber"),
             ("The Bower", "The Great Hall", "The Bottlery"),
@@ -64,16 +64,16 @@ class Occupant(object):
         """Obtains possible directions based off current coordinates."""
         dirs = set()
 
-        if self.location['x'] > X_MIN:
+        if self.location['x'] > MAP_MIN:
             dirs.add("west")
 
-        if self.location['x'] < X_MAX:
+        if self.location['x'] < MAP_MAX:
             dirs.add("east")
 
-        if self.location['y'] > Y_MIN:
+        if self.location['y'] > MAP_MIN:
             dirs.add("south")
 
-        if self.location['y'] < Y_MAX:
+        if self.location['y'] < MAP_MAX:
             dirs.add("north")
 
         return dirs
@@ -110,8 +110,7 @@ class Occupant(object):
 
     def check_treasure(self):
         """Determines if the player has won the game or not."""
-        if self.location['x'] == TREASURE_X \
-                and self.location['y'] == TREASURE_Y:
+        if self.location == TREASURE:
             self.win()
 
     def win(self):
