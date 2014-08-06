@@ -54,7 +54,7 @@ class Occupant(object):
 
     def __init__(self):
         self.location = {'x': randrange(0, 2), 'y': randrange(0, 2)}
-        self.names = [
+        self.rooms = [
             ("The Solar", "The Mezzanine", "The Lords & Ladies ", "Chamber"),
             ("The Bower", "The Great Hall", "The Bottlery"),
             ("The Chapel", "The Oratory", "The Bailey")
@@ -80,7 +80,7 @@ class Occupant(object):
 
     def _get_location(self):
         """Assigns room names to rooms based of cartesian coordinates."""
-        return self.names[self.location['x']][self.location['y']]
+        return self.rooms[self.location['x']][self.location['y']]
 
     def move(self):
         """Move occupant based off direction. Print the current room
